@@ -1,8 +1,8 @@
-package main.java.no.experis;
+package main.java.no.experis.hero;
 
 import main.java.no.experis.items.Equipable;
+import main.java.no.experis.hero.strategies.LevelUpStrategy;
 import main.java.no.experis.items.weapon.Weapon;
-import main.java.no.experis.strategies.LevelUpStrategy;
 
 
 public class Hero {
@@ -35,10 +35,14 @@ public class Hero {
     private void levelUp() {
         this.level++;
         this.levelUpStrategy.levelUp(this.heroStats); // Call the strategy method for leveling up, which differ from HeroClass to HeroClass
-        System.out.println(name + " is now level " + level);
+        // The damage of the weapon is affected by leveling up. So, increase damage if any weapon is equipped.
+        Weapon weapon = heroSlots.getWeapon();
+        if(weapon != null) heroStats.setDamage(weapon.getBaseDamage() + weapon.getBonusDamage(heroStats));
+        System.out.println("\n" + name + " is now level " + level);
     }
 
     public void giveXP(int xp) {
+        System.out.println("\n*" + name + " got " + xp + " xp*");
         xpBank += xp;
         boolean canLevelUp = xpBank >= xpRequirement; // Check if there is enough xp in the bank compared to the requirement
         while(canLevelUp) { // The player will level up as long as the xp in the "xpBank" is greater than or equal the requirement
@@ -51,10 +55,22 @@ public class Hero {
 
     // Method to equip an item, which will affect both HeroSlots and HeroStats
     public void equip(Equipable item) {
-        item.place(heroSlots, heroStats);
+        /* The logic for equipping is different for weapon and armor, as armor affects
+        stats when it's put into a slot, while a weapon only should affect the attack damage.
+        So, we get the EquipStrategy of the Equipable, which is either EquipWeapon or EquipArmor.
+        These strategies override method equip() */
+        item.getEquipStrategy().equip(item, heroSlots, heroStats);
+
+        /* When an item is equipped, it will always effect the damage of the weapon. So, to avoid having to
+        calculate the weapon attack damage every time we display the stats or perform an attack, we set the
+        weapon damage again when an item is equipped. This is also done when the Hero levels up.
+         */
+        Weapon weapon = heroSlots.getWeapon();
+        if(weapon != null) heroStats.setDamage(weapon.getBaseDamage() + weapon.getBonusDamage(heroStats));
+        System.out.println("\n*" + name + " equipped " + item.getName() + "*");
     }
 
-    public void displayHeroStats() {
+    public void displayStats() {
         int totalHealth = heroStats.getHealth() + heroStats.getBonusHealth();
         int totalStrength = heroStats.getStrength() + heroStats.getBonusStrength();
         int totalDexterity = heroStats.getDexterity() + heroStats.getBonusDexterity();
@@ -69,11 +85,11 @@ public class Hero {
                 .append("\n").append("INT: ").append(totalIntelligence).append(" (+").append(heroStats.getBonusIntelligence()).append(")")
                 .append("\n").append("LVL: ").append(level)
                 .append("\n").append("XP to next: ").append(xpRequirement - xpBank)
-                .append("\n").append("- Attacking for " + heroStats.getDamage()).append("\n");
+                .append("\n").append("Attacking for " + heroStats.getDamage());
         System.out.println(str);
     }
 
     public void attack() {
-        System.out.println("*" + name + " dealt " + heroStats.getDamage() + " damage*");
+        System.out.println("\n*" + name + " dealt " + heroStats.getDamage() + " damage*");
     }
 }

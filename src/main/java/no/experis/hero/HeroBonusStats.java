@@ -1,4 +1,4 @@
-package main.java.no.experis;
+package main.java.no.experis.hero;
 
 public class HeroBonusStats {
     private int health;

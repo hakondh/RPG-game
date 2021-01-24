@@ -1,7 +1,7 @@
 package main.java.no.experis.factories;
 
-import main.java.no.experis.Hero;
-import main.java.no.experis.HeroClass;
+import main.java.no.experis.hero.Hero;
+import main.java.no.experis.hero.HeroClass;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,8 +1,8 @@
 package main.java.no.experis.game;
 
-import main.java.no.experis.Hero;
+import main.java.no.experis.hero.Hero;
 import main.java.no.experis.factories.HeroFactory;
-import main.java.no.experis.HeroClass;
+import main.java.no.experis.hero.HeroClass;
 import main.java.no.experis.items.armor.Armor;
 import main.java.no.experis.items.armor.ArmorClass;
 import main.java.no.experis.items.armor.strategies.ArmorBodyPart;
@@ -21,9 +21,9 @@ public class RolePlayingGame {
 
         // Generate some characters and demonstrate the level up give giving them xp
         Hero fingolfin = heroFactory.getHero("Fingolfin", HeroClass.WARRIOR);
-        fingolfin.displayHeroStats();
+        fingolfin.displayStats();
         fingolfin.giveXP(1139); // Will get a level 9 Warrior, like in the example
-        fingolfin.displayHeroStats();
+        fingolfin.displayStats();
 
         /* Create some items; demonstrate the creation of a melee weapon, ranged weapon, a magic weapon
         a helmet, body, and legs. The armor can be a mixture of cloth, leather, and plate */
@@ -34,12 +34,12 @@ public class RolePlayingGame {
         fingolfin.equip(ringil);
         fingolfin.equip(silverBreastPlate);
 
-        fingolfin.displayHeroStats(); // Will give the same stats as the example
+        fingolfin.displayStats(); // Will give the same stats as the example
 
         // Change equipment of characters
         Armor clothShirt = new Armor("Cloth Shirt", ArmorBodyPart.BODY, ArmorClass.CLOTH, 10);
         fingolfin.equip(clothShirt);
-        fingolfin.displayHeroStats();
+        fingolfin.displayStats();
 
         // Showcase the characters attacking
         fingolfin.attack();
@@ -48,7 +48,7 @@ public class RolePlayingGame {
 
         // RANGER
         Hero fingon = heroFactory.getHero("Fingon", HeroClass.RANGER);
-        fingon.displayHeroStats();
+        fingon.displayStats();
         fingon.giveXP(500);
         // Give the ranger a combination of different armor types
         Weapon fingonsBow = new Weapon("Fingon's Bow", WeaponClass.RANGED, 15);
@@ -59,10 +59,25 @@ public class RolePlayingGame {
         fingon.equip(goldenHelmet);
         fingon.equip(leatherShirt);
         fingon.equip(clothLeggings);
-        fingon.displayHeroStats();
+        fingon.displayStats();
 
         // MAGE
         Hero morgoth = heroFactory.getHero("Morgoth", HeroClass.MAGE);
-        morgoth.displayHeroStats();
+        Weapon grond = new Weapon("Grond", WeaponClass.MAGIC, 20);
+        morgoth.displayStats();
+        morgoth.equip(grond);
+        morgoth.displayStats();
+        morgoth.attack();
+        morgoth.giveXP(3000);
+        // As Morgoth has leveled up, he should deal more damage now
+        morgoth.attack();
+
+        // Display stats for some of the created items
+        ringil.displayStats();
+        silverBreastPlate.displayStats();
+        clothShirt.displayStats();
+        leatherShirt.displayStats();
+        fingonsBow.displayStats();
+        grond.displayStats();
     }
 }

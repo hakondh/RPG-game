@@ -1,13 +1,13 @@
 package main.java.no.experis.factories;
 
-import main.java.no.experis.Hero;
-import main.java.no.experis.HeroClass;
-import main.java.no.experis.HeroStats;
+import main.java.no.experis.hero.Hero;
+import main.java.no.experis.hero.HeroClass;
+import main.java.no.experis.hero.HeroStats;
 import main.java.no.experis.constants.*;
-import main.java.no.experis.strategies.LevelUpMage;
-import main.java.no.experis.strategies.LevelUpRanger;
-import main.java.no.experis.strategies.LevelUpStrategy;
-import main.java.no.experis.strategies.LevelUpWarrior;
+import main.java.no.experis.hero.strategies.LevelUpMage;
+import main.java.no.experis.hero.strategies.LevelUpRanger;
+import main.java.no.experis.hero.strategies.LevelUpStrategy;
+import main.java.no.experis.hero.strategies.LevelUpWarrior;
 
 public class HeroFactory {
     public Hero getHero(String name, HeroClass heroClass) {

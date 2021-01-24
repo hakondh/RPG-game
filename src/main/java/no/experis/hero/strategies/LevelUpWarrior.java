@@ -1,6 +1,6 @@
-package main.java.no.experis.strategies;
+package main.java.no.experis.hero.strategies;
 
-import main.java.no.experis.HeroStats;
+import main.java.no.experis.hero.HeroStats;
 import main.java.no.experis.constants.WarriorConstants;
 
 public class LevelUpWarrior implements LevelUpStrategy {

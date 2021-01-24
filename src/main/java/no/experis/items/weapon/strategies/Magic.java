@@ -1,6 +1,6 @@
 package main.java.no.experis.items.weapon.strategies;
 
-import main.java.no.experis.HeroStats;
+import main.java.no.experis.hero.HeroStats;
 import main.java.no.experis.constants.WeaponConstants;
 
 public class Magic implements WeaponStrategy{

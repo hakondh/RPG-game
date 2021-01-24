@@ -1,4 +1,4 @@
-package main.java.no.experis;
+package main.java.no.experis.hero;
 
 public enum HeroClass {
     WARRIOR,

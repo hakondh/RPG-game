@@ -1,13 +1,16 @@
 package main.java.no.experis;
 
 import main.java.no.experis.factories.HeroFactory;
+import main.java.no.experis.hero.Hero;
+import main.java.no.experis.hero.HeroClass;
+import main.java.no.experis.hero.HeroStats;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeroStatsTest {
     HeroFactory heroFactory = new HeroFactory();
-    Hero boromir = heroFactory.getHero("Boromir",HeroClass.WARRIOR);
+    Hero boromir = heroFactory.getHero("Boromir", HeroClass.WARRIOR);
     HeroStats heroStats = boromir.getHeroStats();
 
     /*For now, only the setters are tested. The setters

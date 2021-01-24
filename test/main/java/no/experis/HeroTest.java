@@ -1,6 +1,8 @@
 package main.java.no.experis;
 
 import main.java.no.experis.factories.HeroFactory;
+import main.java.no.experis.hero.Hero;
+import main.java.no.experis.hero.HeroClass;
 import main.java.no.experis.items.weapon.Weapon;
 import main.java.no.experis.items.weapon.WeaponClass;
 import org.junit.jupiter.api.Test;

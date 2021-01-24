@@ -1,7 +1,6 @@
-package main.java.no.experis;
+package main.java.no.experis.hero;
 
 
-import main.java.no.experis.items.Equipable;
 import main.java.no.experis.items.armor.Armor;
 import main.java.no.experis.items.weapon.Weapon;
 

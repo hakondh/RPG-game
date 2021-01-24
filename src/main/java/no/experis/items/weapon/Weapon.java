@@ -1,7 +1,9 @@
 package main.java.no.experis.items.weapon;
 
-import main.java.no.experis.HeroSlots;
-import main.java.no.experis.HeroStats;
+import main.java.no.experis.hero.HeroSlots;
+import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.items.EquipStrategy;
+import main.java.no.experis.items.EquipWeapon;
 import main.java.no.experis.items.Equipable;
 import main.java.no.experis.items.weapon.strategies.WeaponStrategy;
 
@@ -10,6 +12,7 @@ public class Weapon implements Equipable {
     private final WeaponClass weaponClass;
     private final int level;
     private final WeaponStrategy weaponStrategy;
+    private final EquipStrategy equipStrategy = new EquipWeapon();
 
     public Weapon(String name, WeaponClass weaponClass, int level) {
         this.name = name;
@@ -18,16 +21,12 @@ public class Weapon implements Equipable {
         this.weaponStrategy = weaponClass.getWeaponStrategy(); // Set WeaponStrategy based on enum WeaponClass
     }
 
-    // This method places the weapon in a slot of HeroSlots, and updates the stats in HeroStats
-    public void place(HeroSlots heroSlots, HeroStats heroStats) {
-        heroSlots.setWeapon(this);
-        setDamage(heroStats);
+    public String getName() {
+        return name;
     }
 
-    /* Set the damage of the weapon. This method is public so that we can refresh the
-    damage of the weapon from the outside when new armor is equipped */
-    public void setDamage(HeroStats heroStats) {
-        heroStats.setDamage(this.getBaseDamage() + this.getBonusDamage(heroStats));
+    public EquipStrategy getEquipStrategy() {
+        return equipStrategy;
     }
 
     // Get the base damage, which will depend on both the type and the level of the weapon
@@ -36,7 +35,17 @@ public class Weapon implements Equipable {
     }
 
     // Get the bonus damage, that will depend on both the type of weapon and the stats of the Hero
-    private int getBonusDamage(HeroStats heroStats) {
+    public int getBonusDamage(HeroStats heroStats) {
         return weaponStrategy.getBonusDamage(heroStats);
+    }
+
+    public void displayStats() {
+        StringBuilder str = new StringBuilder();
+        str
+                .append("\n").append("Item stats for: ").append(name)
+                .append("\nWeapon type: ").append(weaponClass)
+                .append("\nWeapon level: ").append(level)
+                .append("\nDamage: ").append(getBaseDamage());
+        System.out.println(str);
     }
 }

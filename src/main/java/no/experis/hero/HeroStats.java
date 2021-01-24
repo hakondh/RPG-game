@@ -1,6 +1,4 @@
-package main.java.no.experis;
-
-import main.java.no.experis.items.armor.Armor;
+package main.java.no.experis.hero;
 
 public class HeroStats {
     // The "total" stats
