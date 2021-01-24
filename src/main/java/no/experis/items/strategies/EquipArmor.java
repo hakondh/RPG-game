@@ -1,10 +1,11 @@
-package main.java.no.experis.items;
+package main.java.no.experis.items.strategies;
 
 import main.java.no.experis.hero.HeroSlots;
 import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.items.Equipable;
 import main.java.no.experis.items.armor.Armor;
 
-public class EquipArmor implements EquipStrategy{
+public class EquipArmor implements EquipStrategy {
 
     public void equip(Equipable item, HeroSlots heroSlots, HeroStats heroStats) {
         Armor newArmor = (Armor) item; // Cast Equipable to Armor
@@ -25,19 +26,13 @@ public class EquipArmor implements EquipStrategy{
             }
         }
 
-        // If a armor was equipped previously, then decrease the bonus stats that came from it
-        if(oldArmor != null) decreaseStats(heroStats, oldArmor);
+        // If a armor was equipped previously, then remove the bonus stats that came from it
+        if(oldArmor != null) decreaseBonusStats(heroStats, oldArmor);
         // Then, add to the bonus stats that we get from the new Armor
         increaseBonusStats(heroStats, newArmor);
-
-
-        // Finally,
-        /*if(weapon != null) weapon.setDamage(heroStats); // If the Hero has a weapon equipped, the damage dealt needs to change according to change of HeroStats
-        Weapon weapon = heroSlots.getWeapon();
-        setStats(heroStats, oldArmor, weapon); // Finally, add to the stats for the newly equipped */
     }
 
-    private void decreaseStats(HeroStats heroStats, Armor oldArmor) {
+    private void decreaseBonusStats(HeroStats heroStats, Armor oldArmor) {
         heroStats.addBonusHealth(-oldArmor.getHealthBonus());
         heroStats.addBonusStrength(-oldArmor.getStrengthBonus());
         heroStats.addBonusDexterity(-oldArmor.getDexterityBonus());

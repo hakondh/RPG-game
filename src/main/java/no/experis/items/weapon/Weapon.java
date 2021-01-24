@@ -1,9 +1,8 @@
 package main.java.no.experis.items.weapon;
 
-import main.java.no.experis.hero.HeroSlots;
 import main.java.no.experis.hero.HeroStats;
-import main.java.no.experis.items.EquipStrategy;
-import main.java.no.experis.items.EquipWeapon;
+import main.java.no.experis.items.strategies.EquipStrategy;
+import main.java.no.experis.items.strategies.EquipWeapon;
 import main.java.no.experis.items.Equipable;
 import main.java.no.experis.items.weapon.strategies.WeaponStrategy;
 
@@ -34,11 +33,12 @@ public class Weapon implements Equipable {
         return weaponStrategy.getBaseDamage(level);
     }
 
-    // Get the bonus damage, that will depend on both the type of weapon and the stats of the Hero
+    // Get the bonus damage, which will depend on both the type of weapon and the stats of the Hero
     public int getBonusDamage(HeroStats heroStats) {
         return weaponStrategy.getBonusDamage(heroStats);
     }
 
+    // Get info about the weapon and build a string to display
     public void displayStats() {
         StringBuilder str = new StringBuilder();
         str

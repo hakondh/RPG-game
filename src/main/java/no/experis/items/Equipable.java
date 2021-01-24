@@ -1,10 +1,9 @@
 package main.java.no.experis.items;
 
-import main.java.no.experis.hero.HeroSlots;
-import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.items.strategies.EquipStrategy;
 
+// Every item that can be equipped has to implement this interface
 public interface Equipable {
-    //void place(HeroSlots heroSlots, HeroStats heroStats);
     EquipStrategy getEquipStrategy();
     String getName();
     void displayStats();

@@ -15,6 +15,7 @@ public enum ArmorClass  {
         this.armorStrategy = armorStrategy;
     }
 
+    // Get the armor strategy for the armor class
     public ArmorStrategy getArmorStrategy() {
         return armorStrategy;
     }

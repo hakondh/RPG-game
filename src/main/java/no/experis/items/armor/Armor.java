@@ -1,9 +1,8 @@
 package main.java.no.experis.items.armor;
 
-import main.java.no.experis.items.EquipArmor;
-import main.java.no.experis.items.EquipStrategy;
+import main.java.no.experis.items.strategies.EquipArmor;
+import main.java.no.experis.items.strategies.EquipStrategy;
 import main.java.no.experis.items.Equipable;
-import main.java.no.experis.items.armor.strategies.ArmorBodyPart;
 import main.java.no.experis.items.armor.strategies.ArmorStrategy;
 
 public class Armor implements Equipable {
@@ -21,7 +20,7 @@ public class Armor implements Equipable {
         this.armorClass = armorClass;
         this.level = level;
         this.armorStrategy = armorClass.getArmorStrategy(); // Set ArmorStrategy based on enum ArmorStrategy
-        this.scale = armorBodyPart.getScale(); // Set scale based on what body part this armor fits into
+        this.scale = armorBodyPart.getScale(); // Set scale based on enum ArmorBodyPart
     }
 
     public String getName() {
@@ -52,6 +51,7 @@ public class Armor implements Equipable {
         return armorStrategy.getIntelligence(level, scale);
     }
 
+    // Get information about the armor piece and build a string to display
     public void displayStats() {
         StringBuilder str = new StringBuilder();
         str

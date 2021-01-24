@@ -15,6 +15,7 @@ public enum WeaponClass {
         this.weaponStrategy = weaponStrategy;
     }
 
+    // Get the WeaponStrategy that belongs to the WeaponClass
     public WeaponStrategy getWeaponStrategy() {
         return weaponStrategy;
     }

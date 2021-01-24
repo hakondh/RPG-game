@@ -1,4 +1,4 @@
-package main.java.no.experis.items.armor.strategies;
+package main.java.no.experis.items.armor;
 
 import main.java.no.experis.constants.ArmorConstants;
 
@@ -12,6 +12,7 @@ public enum ArmorBodyPart {
         this.scale = scale;
     }
 
+    // Get the scale for armor body part
     public double getScale() {
         return scale;
     }

@@ -9,16 +9,17 @@ public class Hero {
     private final String name;
     private final HeroClass heroClass;
     private final HeroStats heroStats;
-    private final HeroSlots heroSlots = new HeroSlots();
+    private final HeroSlots heroSlots;
     private final LevelUpStrategy levelUpStrategy;
     private int level = 1;
     private int xpBank = 0;
     private int xpRequirement = 100;
 
-    public Hero(String name, HeroClass heroClass, HeroStats heroStats, LevelUpStrategy levelUpStrategy) {
+    public Hero(String name, HeroClass heroClass, HeroStats heroStats, HeroSlots heroSlots, LevelUpStrategy levelUpStrategy) {
         this.name = name;
         this.heroClass = heroClass;
         this.heroStats = heroStats;
+        this.heroSlots = heroSlots;
         this.levelUpStrategy = levelUpStrategy;
     }
 
@@ -32,15 +33,7 @@ public class Hero {
 
     public HeroStats getHeroStats() {return this.heroStats;}
 
-    private void levelUp() {
-        this.level++;
-        this.levelUpStrategy.levelUp(this.heroStats); // Call the strategy method for leveling up, which differ from HeroClass to HeroClass
-        // The damage of the weapon is affected by leveling up. So, increase damage if any weapon is equipped.
-        Weapon weapon = heroSlots.getWeapon();
-        if(weapon != null) heroStats.setDamage(weapon.getBaseDamage() + weapon.getBonusDamage(heroStats));
-        System.out.println("\n" + name + " is now level " + level);
-    }
-
+    // Give the hero xp and see if leveling up is possible
     public void giveXP(int xp) {
         System.out.println("\n*" + name + " got " + xp + " xp*");
         xpBank += xp;
@@ -53,6 +46,19 @@ public class Hero {
         }
     }
 
+    // Handle leveling up
+    private void levelUp() {
+        this.level++;
+        this.levelUpStrategy.levelUp(this.heroStats); // Call the strategy method for leveling up, which is different for different hero classes
+
+        /* The damage of the weapon is affected by leveling up. So, increase damage if any weapon is equipped.
+        (Another way to do this is to calculate the damage every time a hero attacks. I chose to rather do it this way, to avoid having to do that
+        calculation every single time a hero attacks. */
+        Weapon weapon = heroSlots.getWeapon();
+        if(weapon != null) heroStats.setDamage(weapon.getBaseDamage() + weapon.getBonusDamage(heroStats));
+        System.out.println("\n" + name + " is now level " + level);
+    }
+
     // Method to equip an item, which will affect both HeroSlots and HeroStats
     public void equip(Equipable item) {
         /* The logic for equipping is different for weapon and armor, as armor affects
@@ -61,15 +67,15 @@ public class Hero {
         These strategies override method equip() */
         item.getEquipStrategy().equip(item, heroSlots, heroStats);
 
-        /* When an item is equipped, it will always effect the damage of the weapon. So, to avoid having to
+        /* When an item is equipped, it will always affect the damage of the weapon. So, to avoid having to
         calculate the weapon attack damage every time we display the stats or perform an attack, we set the
-        weapon damage again when an item is equipped. This is also done when the Hero levels up.
-         */
+        weapon damage again when an item is equipped. This is also done when the Hero levels up (see comment in that method).*/
         Weapon weapon = heroSlots.getWeapon();
         if(weapon != null) heroStats.setDamage(weapon.getBaseDamage() + weapon.getBonusDamage(heroStats));
         System.out.println("\n*" + name + " equipped " + item.getName() + "*");
     }
 
+    // Gets the stats for the hero, and builds a string to display
     public void displayStats() {
         int totalHealth = heroStats.getHealth() + heroStats.getBonusHealth();
         int totalStrength = heroStats.getStrength() + heroStats.getBonusStrength();

@@ -55,28 +55,28 @@ public class HeroStats {
         return bonusHealth;
     }
 
-    public void addBonusHealth(int bonusHealth) {
-        this.bonusHealth += bonusHealth;
-    }
-
     public int getBonusStrength() {
         return bonusStrength;
-    }
-
-    public void addBonusStrength(int bonusStrength) {
-        this.bonusStrength += bonusStrength;
     }
 
     public int getBonusIntelligence() {
         return bonusIntelligence;
     }
 
-    public void addBonusIntelligence(int bonusIntelligence) {
-        this.bonusIntelligence += bonusIntelligence;
-    }
-
     public int getBonusDexterity() {
         return bonusDexterity;
+    }
+
+    public void addBonusHealth(int bonusHealth) {
+        this.bonusHealth += bonusHealth;
+    }
+
+    public void addBonusStrength(int bonusStrength) {
+        this.bonusStrength += bonusStrength;
+    }
+
+    public void addBonusIntelligence(int bonusIntelligence) {
+        this.bonusIntelligence += bonusIntelligence;
     }
 
     public void addBonusDexterity(int bonusDexterity) {

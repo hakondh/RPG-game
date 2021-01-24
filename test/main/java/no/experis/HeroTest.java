@@ -50,4 +50,9 @@ class HeroTest {
         gimli.equip(axe);
         assertEquals(32, gimli.getHeroStats().getDamage());
     }
+
+    @Test
+    void testAttack() {
+        gimli.attack();
+    }
 }

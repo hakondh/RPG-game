@@ -2,6 +2,7 @@ package main.java.no.experis.factories;
 
 import main.java.no.experis.hero.Hero;
 import main.java.no.experis.hero.HeroClass;
+import main.java.no.experis.hero.HeroSlots;
 import main.java.no.experis.hero.HeroStats;
 import main.java.no.experis.constants.*;
 import main.java.no.experis.hero.strategies.LevelUpMage;
@@ -12,6 +13,7 @@ import main.java.no.experis.hero.strategies.LevelUpWarrior;
 public class HeroFactory {
     public Hero getHero(String name, HeroClass heroClass) {
         HeroStats heroStats;
+        HeroSlots heroSlots = new HeroSlots();
         LevelUpStrategy levelUpStrategy;
 
         switch (heroClass) {
@@ -23,7 +25,7 @@ public class HeroFactory {
                         WarriorConstants.START_INT
                 );
                 levelUpStrategy = new LevelUpWarrior();
-                return new Hero(name, heroClass, heroStats, levelUpStrategy);
+                return new Hero(name, heroClass, heroStats, heroSlots, levelUpStrategy);
             }
             case RANGER -> {
                 heroStats = new HeroStats(
@@ -33,7 +35,7 @@ public class HeroFactory {
                         RangerConstants.START_INT
                 );
                 levelUpStrategy = new LevelUpRanger();
-                return new Hero(name, heroClass, heroStats, levelUpStrategy);
+                return new Hero(name, heroClass, heroStats, heroSlots, levelUpStrategy);
             }
             case MAGE -> {
                 heroStats = new HeroStats(
@@ -43,7 +45,7 @@ public class HeroFactory {
                         MageConstants.START_INT
                 );
                 levelUpStrategy = new LevelUpMage();
-                return new Hero(name, heroClass, heroStats, levelUpStrategy);
+                return new Hero(name, heroClass, heroStats, heroSlots, levelUpStrategy);
             }
         }
         return null;

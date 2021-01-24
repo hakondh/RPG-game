@@ -5,7 +5,7 @@ import main.java.no.experis.factories.HeroFactory;
 import main.java.no.experis.hero.HeroClass;
 import main.java.no.experis.items.armor.Armor;
 import main.java.no.experis.items.armor.ArmorClass;
-import main.java.no.experis.items.armor.strategies.ArmorBodyPart;
+import main.java.no.experis.items.armor.ArmorBodyPart;
 import main.java.no.experis.items.weapon.Weapon;
 import main.java.no.experis.items.weapon.WeaponClass;
 
