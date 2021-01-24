@@ -17,6 +17,19 @@ The hero can change equipment by simply equipping another item. The attributes o
 
 The hero can attack, and doing so will show how much damage is dealt. It is also possible to display stats for heroes, weapons and armor.
 
+Information about a hero will look something like this:
+
+    WARRIOR Fingolfin details: 
+    HP: 480 (+90)
+    STR: 63 (+13)
+    DEX: 25 (+6)
+    INT: 9 (+0)
+    LVL: 9
+    XP to next: 212
+    Attacking for 119
+
+The first number after the attribute is the total value, while the value in parenthesis is the bonus value. 
+
 ## How to run
 
 The program can be run by simply opening it in an IDE, and using the IDE's tools to run the main method, which can be found in *src/main/java/no/experis/game/Main.java*. 
