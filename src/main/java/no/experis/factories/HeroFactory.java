@@ -2,7 +2,6 @@ package main.java.no.experis.factories;
 
 import main.java.no.experis.Hero;
 import main.java.no.experis.HeroClass;
-import main.java.no.experis.HeroSlots;
 import main.java.no.experis.HeroStats;
 import main.java.no.experis.constants.*;
 import main.java.no.experis.strategies.LevelUpMage;
