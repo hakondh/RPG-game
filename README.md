@@ -27,26 +27,27 @@ This project demonstrates the use of SOLID principles, and includes some design 
 
 The code is divided into five sub packages under *src/main/java/no/expers*: *constants*, *factories*, *game*, *hero* and *items*.
 
-1. constants
+**1. Constants** <br />
 This package contains many of the constants that is used throghout the RPG system. They are put in their own files, so that you can tweak certain values easily, without having to find them in the code and change every occurance. 
 
-2. factories
-This package contains the factory classes. This package only contains one class for the time being, the *HeroFactory*, which makes creating a new hero an easy task. It simply takes the name and the class of the new hero, and sets the default values accordingly. 
+**2. Factories:** <br />
+This package contains the factory classes. This package only contains one class for the time being, the *HeroFactory*, which makes creating a new hero an easy task. It simply takes the name and the class of the new hero, and sets the default values accordingly.
 
-3. game
+**3. Game:** <br />
 This package contains the code to run the game itself. The entry point can be found in the file *Main*. It also contains the file *RolePLayingGame*, which creates all the heroes and items, and performs some interactions on them. 
 
-4. hero
+**4. Hero:** <br />
 This package contains everything related to the heroes. *Hero* represents the hero, and offers methods to perform actions that the hero can do, like leveling up, equipping items, attack and display stats. All other files found in this package is part of *Hero* in some form. 
-    - *HeroStats* represents all the attributes of the hero, as well as the "bonus values" it gets through putting on armor. The bonues values are added to, not set directly, as there can be many armour pieces that together decides what the total bonus value will be. 
-    - *HeroSlots* represents the "inventory" of the hero, and is where the items a hero equips is stored. 
-    - *HeroClass* is an enumerator, which contains all the classes a hero can be. 
+- *HeroStats* represents all the attributes of the hero, as well as the "bonus values" it gets through putting on armor. The bonues values are added to, not set directly, as there can be many armour pieces that together decides what the total bonus value will be. 
+- *HeroSlots* represents the "inventory" of the hero, and is where the items a hero equips is stored. 
+- *HeroClass* is an enumerator, which contains all the classes a hero can be. 
 You also have the sub package *strategies*. This package contains the logic for leveling up the hero, which is slightly different for each class.
 
-5. items
+**5. Items:** <br />
 This package contains everything related to items. 
-    - The *Equipable* interface contains all the methods that an *Equipable* should implement. Both weapon and armor implements Equipable. That way, the hero can equip, get the name and get info about the item, without knowing if it is a weapon or a piece of armor. 
-    - The sub package *strategies* contains *EquipStrategy*. Both weapon and armor have their special logic for getting equipped, found in *EquipWeapon* and *EquipArmor* in the same package, both implementing *EquipStrategy*. 
-    - 
+- The *Equipable* interface contains all the methods that an *Equipable* should implement. Both weapon and armor implements Equipable. That way, the hero can equip, get the name and get info about the item, without knowing if it is a weapon or a piece of armor. 
+- The sub package *strategies* contains *EquipStrategy*. Both weapon and armor have their special logic for getting equipped, found in *EquipWeapon* and *EquipArmor* in the same package, both implementing *EquipStrategy*. 
+- The sub package *weapon* contains everything related to weapons. *Weapon* contains all the methods to get information about the weapon, like name, base damage, bonus damage, and so on. Each *Weapon* also has a *WeaponStrategy*, as there are different types of weapons, that will differ in how damage is calculated. What *WeaponStrategy* the *Weapon* should use is decided from the enumerator *WeaponClass* that is passed in from the client. You get the *WeaponStrategy* from the enum itself. 
+- The sub package *armor* contains everything related to armor. *Armor* contains all the methods to get information about the armor piece, like name, what body type it fits into, the bonuses, and so on. Each armor also has a *ArmorStrategy*, as there are different types of armor, that will differ in how bonuses are calculated. What *ArmorStrategy* the *Armor* should use is decided from the enumerator *ArmorClass* that is passed in from the client. You get the *ArmorStrategy* from the enum itself. The calculated bonuses will *also* depend on the scaling, which is different for each body part. The scaling for the armor is set using the enumerator *ArmorBodyPart*.
 
 
