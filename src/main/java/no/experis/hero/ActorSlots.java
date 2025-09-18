@@ -4,7 +4,7 @@ package main.java.no.experis.hero;
 import main.java.no.experis.items.armor.Armor;
 import main.java.no.experis.items.weapon.Weapon;
 
-public class HeroSlots {
+public class ActorSlots {
     // A Hero has nothing equipped on creation
     private Weapon weapon = null;
     private Armor head = null;

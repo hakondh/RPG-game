@@ -1,6 +1,6 @@
 package main.java.no.experis.hero;
 
-public enum HeroClass {
+public enum ActorClass {
     WARRIOR,
     RANGER,
     MAGE

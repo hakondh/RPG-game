@@ -1,6 +1,6 @@
 package main.java.no.experis.items.weapon.strategies;
 
-import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.hero.ActorStats;
 import main.java.no.experis.constants.WeaponConstants;
 
 public class Magic implements WeaponStrategy{
@@ -9,7 +9,7 @@ public class Magic implements WeaponStrategy{
         return WeaponConstants.MAGIC_BASE_DMG + (2 * level);
     }
 
-    public int getBonusDamage(HeroStats heroStats) {
+    public int getBonusDamage(ActorStats heroStats) {
         return (heroStats.getIntelligence() + heroStats.getBonusIntelligence())*3;
     }
 }

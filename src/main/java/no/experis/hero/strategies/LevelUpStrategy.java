@@ -1,7 +1,7 @@
 package main.java.no.experis.hero.strategies;
 
-import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.hero.ActorStats;
 
 public interface LevelUpStrategy {
-    void levelUp(HeroStats heroStats);
+	void levelUp(ActorStats actorStats);
 }

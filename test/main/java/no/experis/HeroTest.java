@@ -1,8 +1,8 @@
 package main.java.no.experis;
 
-import main.java.no.experis.factories.HeroFactory;
-import main.java.no.experis.hero.Hero;
-import main.java.no.experis.hero.HeroClass;
+import main.java.no.experis.factories.ActorFactory;
+import main.java.no.experis.hero.Actor;
+import main.java.no.experis.hero.ActorClass;
 import main.java.no.experis.items.weapon.Weapon;
 import main.java.no.experis.items.weapon.WeaponClass;
 import org.junit.jupiter.api.Test;
@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeroTest {
-    HeroFactory heroFactory = new HeroFactory();
-    Hero gimli = heroFactory.getHero("Gimli", HeroClass.WARRIOR);
+    ActorFactory heroFactory = new ActorFactory();
+    Actor gimli = heroFactory.getHero("Gimli", ActorClass.WARRIOR);
     Weapon axe = new Weapon("Glóin's Axe", WeaponClass.MELEE, 1);
 
     @Test
@@ -21,12 +21,12 @@ class HeroTest {
 
     @Test
     void testGetHeroSlots() {
-        assertNotNull(gimli.getHeroSlots());
+        assertNotNull(gimli.getActorSlots());
     }
 
     @Test
     void testGetHeroStats() {
-        assertNotNull(gimli.getHeroStats());
+        assertNotNull(gimli.getActorStats());
     }
 
     @Test
@@ -34,10 +34,10 @@ class HeroTest {
         gimli.giveXP(100);
         assertEquals(2, gimli.getLevel());// Check that the level has gone up to 2
         // Check stats
-        assertEquals(180, gimli.getHeroStats().getHealth());
-        assertEquals(15, gimli.getHeroStats().getStrength());
-        assertEquals(5, gimli.getHeroStats().getDexterity());
-        assertEquals(2, gimli.getHeroStats().getIntelligence());
+        assertEquals(180, gimli.getActorStats().getBaseHealth());
+        assertEquals(15, gimli.getActorStats().getStrength());
+        assertEquals(5, gimli.getActorStats().getDexterity());
+        assertEquals(2, gimli.getActorStats().getIntelligence());
     }
 
     @Test
@@ -48,7 +48,7 @@ class HeroTest {
     @Test
     void testEquip(){
         gimli.equip(axe);
-        assertEquals(32, gimli.getHeroStats().getDamage());
+        assertEquals(32, gimli.getActorStats().getDamage());
     }
 
     @Test

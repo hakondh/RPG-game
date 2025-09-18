@@ -1,27 +1,27 @@
 package main.java.no.experis.factories;
 
-import main.java.no.experis.hero.Hero;
-import main.java.no.experis.hero.HeroClass;
+import main.java.no.experis.hero.Actor;
+import main.java.no.experis.hero.ActorClass;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeroFactoryTest {
-    HeroFactory heroFactory = new HeroFactory();
+    ActorFactory heroFactory = new ActorFactory();
 
     @Test
     void testGetWarriorHero() {
-        Hero aragorn = heroFactory.getHero("Aragorn", HeroClass.WARRIOR);
+        Actor aragorn = heroFactory.getHero("Aragorn", ActorClass.WARRIOR);
         assertNotNull(aragorn);
     }
     @Test
     void testGetMageHero() {
-        Hero gandalf = heroFactory.getHero("Gandalf", HeroClass.MAGE);
+        Actor gandalf = heroFactory.getHero("Gandalf", ActorClass.MAGE);
         assertNotNull(gandalf);
     }
     @Test
     void testGetRangerHero() {
-        Hero legolas = heroFactory.getHero("Legolas", HeroClass.RANGER);
+        Actor legolas = heroFactory.getHero("Legolas", ActorClass.RANGER);
         assertNotNull(legolas);
     }
 }

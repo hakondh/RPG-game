@@ -1,6 +1,6 @@
 package main.java.no.experis.items.weapon.strategies;
 
-import main.java.no.experis.hero.HeroStats;
+import main.java.no.experis.hero.ActorStats;
 import main.java.no.experis.constants.WeaponConstants;
 
 public class Melee implements WeaponStrategy{
@@ -9,7 +9,7 @@ public class Melee implements WeaponStrategy{
         return WeaponConstants.MELEE_BASE_DMG + (2 * level);
     }
 
-    public int getBonusDamage(HeroStats heroStats) {
+    public int getBonusDamage(ActorStats heroStats) {
         return (int) ((heroStats.getStrength() + heroStats.getBonusStrength())*1.5);
     }
 }
