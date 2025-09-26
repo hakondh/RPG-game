@@ -2,9 +2,9 @@ package main.java.no.experis.game;
 
 import java.util.Random;
 
-import Enemies.Enemies;
-import Enums.BattleResult;
 import main.java.no.experis.battles.TypingBattle;
+import main.java.no.experis.enemies.Enemies;
+import main.java.no.experis.enums.BattleResult;
 import main.java.no.experis.helpers.PrintHelper;
 import main.java.no.experis.hero.Actor;
 

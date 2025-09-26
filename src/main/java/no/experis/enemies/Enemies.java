@@ -1,4 +1,4 @@
-package Enemies;
+package main.java.no.experis.enemies;
 
 import java.util.ArrayList;
 import java.util.List;

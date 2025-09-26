@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import Enums.BattleResult;
+import main.java.no.experis.enums.BattleResult;
 import main.java.no.experis.helpers.PrintHelper;
 import main.java.no.experis.hero.Actor;
 
