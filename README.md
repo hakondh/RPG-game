@@ -63,4 +63,9 @@ This package contains everything related to items.
 - The sub package *weapon* contains everything related to weapons. *Weapon* contains all the methods to get information about the weapon, like name, base damage, bonus damage, and so on. Each *Weapon* also has a *WeaponStrategy*, as there are different types of weapons, that will differ in how damage is calculated. What *WeaponStrategy* the *Weapon* should use is decided from the enumerator *WeaponClass* that is passed in from the client. You get the *WeaponStrategy* from the enum itself. 
 - The sub package *armor* contains everything related to armor. *Armor* contains all the methods to get information about the armor piece, like name, what body type it fits into, the bonuses, and so on. Each armor also has a *ArmorStrategy*, as there are different types of armor, that will differ in how bonuses are calculated. What *ArmorStrategy* the *Armor* should use is decided from the enumerator *ArmorClass* that is passed in from the client. You get the *ArmorStrategy* from the enum itself. The calculated bonuses will *also* depend on the scaling, which is different for each body part. The scaling for the armor is set using the enumerator *ArmorBodyPart*.
 
+**Class diagram for the Hero structure**
+
+<img width="12246" height="5442" alt="RPG Game Class Diagram (4)" src="https://github.com/user-attachments/assets/d1088682-1ff0-4420-9ac3-e5270298b588" />
+
+
 
