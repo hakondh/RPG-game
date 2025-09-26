@@ -2,7 +2,7 @@
 
 ## About
 
-A RPG character system written in Java. The program lets you create characters (reffered to as "heroes"), weapons and armor. 
+An RPG character system written in Java. The program lets you create characters (reffered to as "heroes"), weapons and armor. 
 The heroes has a class, either *warrior*, *ranger* or *mage*. All heroes have the attributes *health*, *strength*, *dexterity* and *intelligence*, but the starting values for these attributes are depend on what class the hero has. 
 
 The heroes can gain xp, and if they get enough of it, they will level up. Leveling up will add to the values of the attributes, making them stronger. However, how and what attributes that are affected will, again, depend on what class the hero has. 
